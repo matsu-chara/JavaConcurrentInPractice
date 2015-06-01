@@ -1,9 +1,10 @@
-package io.matsu_chara.chapter1;
+package io.matsu_chara.chapter2;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Chapter1Test {
+public class Chapter2Test {
 
     public static void main(String[] args) {
         long start, end;
@@ -20,18 +21,21 @@ public class Chapter1Test {
     }
 
     public static void testChapter() {
-        UnsafeSequence us = new UnsafeSequence();
-        Sequence       s  = new Sequence();
+        BigInteger bi = BigInteger.valueOf(150000);
+        CountingFactorizer cf = new CountingFactorizer(bi);
+        UnsafeCountingFactorizer ucf = new UnsafeCountingFactorizer(bi);
+        SynchronizedFactorizer sf = new SynchronizedFactorizer(bi);
 
         List<Thread> ts1 = new ArrayList<>();
         List<Thread> ts2 = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
-            ts1.add(new Thread(us));
-            ts2.add(new Thread(s));
+        for (int i = 0; i < 3; i++) {
+            ts1.add(new Thread(cf));
+            ts2.add(new Thread(sf));
         }
 
         for (Thread t : ts1) t.start();
         for (Thread t : ts2) t.start();
     }
+
 }
