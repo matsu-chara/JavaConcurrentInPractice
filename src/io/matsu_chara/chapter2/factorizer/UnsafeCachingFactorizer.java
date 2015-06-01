@@ -1,11 +1,13 @@
-package io.matsu_chara.chapter2;
+package io.matsu_chara.chapter2.factorizer;
 
 import io.matsu_chara.annotation.NotThreadSafe;
+import io.matsu_chara.chapter2.dummyServlet.Servlet;
+import io.matsu_chara.chapter2.dummyServlet.ServletRequest;
+import io.matsu_chara.chapter2.dummyServlet.ServletResponse;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
 
 @NotThreadSafe

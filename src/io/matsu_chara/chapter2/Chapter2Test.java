@@ -1,5 +1,9 @@
 package io.matsu_chara.chapter2;
 
+import io.matsu_chara.chapter2.factorizer.CountingFactorizer;
+import io.matsu_chara.chapter2.factorizer.SynchronizedFactorizer;
+import io.matsu_chara.chapter2.factorizer.UnsafeCountingFactorizer;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +26,9 @@ public class Chapter2Test {
 
     public static void testChapter() {
         BigInteger bi = BigInteger.valueOf(150000);
-        CountingFactorizer cf = new CountingFactorizer(bi);
+        CountingFactorizer       cf = new CountingFactorizer(bi);
         UnsafeCountingFactorizer ucf = new UnsafeCountingFactorizer(bi);
-        SynchronizedFactorizer sf = new SynchronizedFactorizer(bi);
+        SynchronizedFactorizer   sf = new SynchronizedFactorizer(bi);
 
         List<Thread> ts1 = new ArrayList<>();
         List<Thread> ts2 = new ArrayList<>();

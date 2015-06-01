@@ -1,6 +1,9 @@
-package io.matsu_chara.chapter2;
+package io.matsu_chara.chapter2.factorizer;
 
 import io.matsu_chara.annotation.ThreadSafe;
+import io.matsu_chara.chapter2.dummyServlet.Servlet;
+import io.matsu_chara.chapter2.dummyServlet.ServletRequest;
+import io.matsu_chara.chapter2.dummyServlet.ServletResponse;
 
 import java.math.BigInteger;
 import java.util.ArrayList;

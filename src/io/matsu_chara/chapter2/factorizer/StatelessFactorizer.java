@@ -1,28 +1,27 @@
-package io.matsu_chara.chapter2;
+package io.matsu_chara.chapter2.factorizer;
 
-import io.matsu_chara.annotation.NotThreadSafe;
+import io.matsu_chara.annotation.ThreadSafe;
+import io.matsu_chara.chapter2.dummyServlet.Servlet;
+import io.matsu_chara.chapter2.dummyServlet.ServletRequest;
+import io.matsu_chara.chapter2.dummyServlet.ServletResponse;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-@NotThreadSafe
-public class UnsafeCountingFactorizer implements Servlet, Runnable {
-    private long count = 0;
+@ThreadSafe
+public class StatelessFactorizer implements Servlet, Runnable {
     private BigInteger m;
 
-    public UnsafeCountingFactorizer(BigInteger m) {
+    public StatelessFactorizer(BigInteger m) {
         this.m = m;
     }
-
-    public long getCount() { return count; }
 
     private BigInteger[] factor(BigInteger m) {
         List<BigInteger> facts = new ArrayList<>();
         for(BigInteger i = BigInteger.valueOf(2); i.compareTo(m.divide(BigInteger.valueOf(2))) < 0; i = i.add(BigInteger.ONE)) {
             if(m.mod(i).equals(BigInteger.ZERO)) facts.add(i);
         }
-        ++count;
 
         BigInteger[] bis = new BigInteger[facts.size()];
         return facts.toArray(bis);
@@ -31,9 +30,8 @@ public class UnsafeCountingFactorizer implements Servlet, Runnable {
     @Override
     public void run() {
         for (BigInteger bi : factor(m)) {
-            System.out.println("fact: " + bi);
+            System.out.println("fact :" + bi);
         }
-        System.out.println("current count: " + count);
     }
 
     // 実際には使っていない
@@ -41,7 +39,6 @@ public class UnsafeCountingFactorizer implements Servlet, Runnable {
     public void service(ServletRequest req, ServletResponse resp) {
         BigInteger   i       = extractFromRequest(req);
         BigInteger[] factors = factor(i);
-        ++count;
         encodeIntoResponse(resp, factors);
     }
 
