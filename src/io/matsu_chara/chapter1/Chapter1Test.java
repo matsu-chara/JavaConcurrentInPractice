@@ -1,5 +1,8 @@
 package io.matsu_chara.chapter1;
 
+import io.matsu_chara.chapter1.seq.Sequence;
+import io.matsu_chara.chapter1.seq.UnsafeSequence;
+
 import java.util.ArrayList;
 import java.util.List;
 

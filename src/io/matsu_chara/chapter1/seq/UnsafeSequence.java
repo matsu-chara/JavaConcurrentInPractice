@@ -1,4 +1,4 @@
-package io.matsu_chara.chapter1;
+package io.matsu_chara.chapter1.seq;
 
 import io.matsu_chara.annotation.NotThreadSafe;
 
